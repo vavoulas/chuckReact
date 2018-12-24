@@ -1,6 +1,7 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -28,7 +29,16 @@ module.exports = {
             }
 
 
-        )
+        ),
+        new SWPrecacheWebpackPlugin({
+            cacheId: 'chuckApp',
+            dontCacheBustUrlsMatching: /\.\w{8}\./,
+            filename: 'service-worker.js',
+            minify: true,
+            navigateFallback: 'index.html',
+            staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+        })
+
     ]
 
 
