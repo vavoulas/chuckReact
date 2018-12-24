@@ -29,7 +29,8 @@ class Search extends Component {
       () => {
         if (this.state.queryText === '') {
           this.setState({ jokes: [], title: "" })
-        } else {
+        }
+        else {
           axios
             .get(
               `${this.state.apiUrl}/jokes/search?query=${this.state.queryText}`
@@ -84,7 +85,9 @@ class Search extends Component {
         </div> 
         <br/>
         <div className="out">
-          <h1 className="text-center">{this.state.title}</h1> 
+          <h1 className="text-center">{this.state.title}</h1>
+         
+           
         
          
           <ul className='list-group'>
