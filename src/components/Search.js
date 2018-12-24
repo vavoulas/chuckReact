@@ -8,7 +8,8 @@ class Search extends Component {
       queryText: '',
       apiUrl: 'https://api.chucknorris.io',
 
-      jokes: []
+      jokes: [],
+      title:''
     }
     this.handleChange = this.handleChange.bind(this);
     this.searchQuery = this.searchQuery.bind(this);
@@ -27,13 +28,13 @@ class Search extends Component {
       },
       () => {
         if (this.state.queryText === '') {
-          this.setState({ jokes: [] })
+          this.setState({ jokes: [], title: "" })
         } else {
           axios
             .get(
               `${this.state.apiUrl}/jokes/search?query=${this.state.queryText}`
             )
-            .then(res => this.setState({ jokes: res.data.result }))
+            .then(res => this.setState({ jokes: res.data.result , title: "Jokes"}))
             .catch(err => console.log(err))
             console.log(this.state.jokes);
         }
@@ -83,7 +84,7 @@ class Search extends Component {
         </div> 
         <br/>
         <div className="out">
-          <h1 className="text-center">Jokes</h1>
+          <h1 className="text-center">{this.state.title}</h1>
           <ul className='list-group'>
           {this.state.jokes.map(bloop => 
               <li className = "list-group-item d-flex flex-column justify-content-between ">
