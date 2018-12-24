@@ -36,7 +36,7 @@ class Search extends Component {
             )
             .then(res => this.setState({ jokes: res.data.result , title: "Jokes"}))
             .catch(err => console.log(err))
-            console.log(this.state.jokes);
+            
         }
       }
     )
@@ -58,7 +58,7 @@ class Search extends Component {
                     <input
                       name='queryText'
                       type='text'
-                      placeholder='Search'
+                      placeholder='Search a Chuck Norris Joke'
                       className='form-control form-control-lg form-control-borderless '
                       value={this.state.queryText} 
                       onChange={this.handleChange} 
@@ -84,7 +84,9 @@ class Search extends Component {
         </div> 
         <br/>
         <div className="out">
-          <h1 className="text-center">{this.state.title}</h1>
+          <h1 className="text-center">{this.state.title}</h1> 
+        
+         
           <ul className='list-group'>
           {this.state.jokes.map(bloop => 
               <li className = "list-group-item d-flex flex-column justify-content-between ">
